@@ -33,15 +33,19 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
-        // Create a new user
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->username,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-        ]); 
+        if($request->user()->is_admin){
+            // Create a new user
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->username,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+            ]); 
 
-        return redirect()->back()->with('success', 'User created successfully!');
+            return redirect()->back()->with('success', 'User created successfully!');
+        }
+
+        return back()->with('error', 'You are not authorized to perform this action!');
     }
 
     public function logout(Request $request)

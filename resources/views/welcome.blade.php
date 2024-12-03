@@ -77,10 +77,10 @@
             <form action="{{ route('auth.login') }}" method="post">
                 @csrf
                 <div class="mb-3">
-                    <input type="text" name="username" class="form-control" placeholder="Username" required value="test@example.com">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password" required value="12345678">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
                 <div class="d-grid mb-3">
                     <button class="btn btn-info text-white" type="submit">Sign In</button>
